@@ -1,0 +1,2 @@
+A plugin for mumble that adds proximity chat to Terraria! Now in development.
+https://www.mumble.info

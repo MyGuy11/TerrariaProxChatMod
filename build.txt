@@ -1,0 +1,8 @@
+displayName = Terraria Proximity Chat
+author = MyGuy
+version = 1.0.0
+hideCode = false
+hideResources = false
+includeSource = true
+includePDB = true
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
