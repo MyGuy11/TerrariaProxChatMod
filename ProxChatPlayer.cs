@@ -1,8 +1,9 @@
+// Author = MyGuy
+
 using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-// Author = MyGuy
 
 using ProxChat.Buffs;
 using ProxChatAssistant;
