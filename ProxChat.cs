@@ -10,8 +10,10 @@ namespace ProxChat
 	public class ProxChat : Mod
 	{
 		public static string AppDataPath { get; private set; }
+
 		public ProxChat()
 		{
+            // Get the path to the ProxChat.dat file
             AppDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "tModLoader");
             if (!Directory.Exists(AppDataPath)) { Directory.CreateDirectory(AppDataPath); }
             AppDataPath = Path.Combine(AppDataPath, "ProxChat.dat");

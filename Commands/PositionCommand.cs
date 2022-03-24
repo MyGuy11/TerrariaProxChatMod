@@ -23,8 +23,12 @@ namespace ProxChat.Commands
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText("X: " + Tracker.posX);
-            Main.NewText("Y: " + Tracker.posY);
+            Main.NewText("X (pixels): " + Tracker.posX);
+            Main.NewText("Y (pixels): " + Tracker.posY);
+            Main.NewText("X (blocks): " + (Tracker.posX / 16));
+            Main.NewText("Y (blocks): " + (Tracker.posY / 16));
+            Main.NewText("X (meters): " + ((Tracker.posX / 16) * 2 * 0.3048));
+            Main.NewText("Y (meters): " + ((Tracker.posY / 16) * 2 * 0.3048));
         }
     }
 }

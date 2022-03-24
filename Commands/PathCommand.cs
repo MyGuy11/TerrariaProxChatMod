@@ -12,10 +12,10 @@ namespace ProxChat.Commands
             => CommandType.Chat;
 
         public override string Command 
-            => "path";
+            => "proxPath";
 
         public override string Usage 
-            => "/path";
+            => "/proxPath";
 
         public override string Description
             => "Prints the mod's data path";

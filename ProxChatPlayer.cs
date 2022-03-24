@@ -1,6 +1,5 @@
 // Author = MyGuy
 
-using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
@@ -13,9 +12,9 @@ namespace ProxChat
 {
     public class ProxChatPlayer : ModPlayer
     {
-        public static int count { get; set; }
-        private readonly List<string> lab = new() { "Dead", "InWorld" };
-        private readonly List<dynamic> val = new() { true, true };
+        private readonly List<string> lab = new() { "Dead", "InWorld" }; // Always gonna print the same values, so assigning them beforehand
+        private readonly List<dynamic> val = new() { true, true }; // The values for the labels above
+        
         public override void OnEnterWorld(Player player)
         {
             Main.NewText("Welcome to Terraria ProxChat!");
@@ -23,7 +22,6 @@ namespace ProxChat
             //Give the Tracker buff to start update loop
             //int.MaxValue to ensure that the buff never runs out; Had it run out during testing with 2 tick buff and constant updates
             player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
-            count = 0;
         }
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -50,14 +48,10 @@ namespace ProxChat
         public override void PlayerDisconnect(Player player)
         {
             EditContainer("InWorld", false);
-            Console.WriteLine(player.name);
-
-            foreach (var _player in Main.player)
-            {
-                if (_player.name != " ") { Console.WriteLine(_player.name); }
-            }
         }
 
+        // These two containers exist so that I can await the ProxWriter methods.
+        // This way, it doesn't freeze the game.
         public static async void EditContainer(string label, dynamic data)
         {
             await ProxWriter.EditValueAsync(ProxChat.AppDataPath, label, data);   

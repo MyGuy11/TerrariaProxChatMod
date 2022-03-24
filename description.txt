@@ -1,2 +1,6 @@
-A plugin for mumble that adds proximity chat to Terraria! Now in development.
-https://www.mumble.info
+A plugin for mumble that adds proximity chat to Terraria!
+Requires Mumble and the companion plugin.
+Links can be found below for this mod, mumble, and the companion plugin.
+https://github.com/MyGuy11/TerrariaProxChatMod - This mod
+https://github.com/MyGuy11/TerrariaProxChatPlugin - The companion plugin
+https://www.mumble.info/downloads/ - Mumble download link

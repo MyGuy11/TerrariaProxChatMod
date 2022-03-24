@@ -3,6 +3,7 @@ author = MyGuy
 version = 1.0.0
 hideCode = false
 hideResources = false
+homepage = https://github.com/MyGuy11/TerrariaProxChatMod
 includeSource = true
 includePDB = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*
