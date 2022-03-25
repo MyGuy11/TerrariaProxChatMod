@@ -1,3 +1,5 @@
+# Put on hiatus until Mumble 1.4 x64 doesn't run like garbage
+
 # TerrariaProxChatMod
 A tModLoader 1.4 mod that allows the companion mumble plugin to work.<br/>
 Allows people to use proximity chat in Terraria with Mumble.
