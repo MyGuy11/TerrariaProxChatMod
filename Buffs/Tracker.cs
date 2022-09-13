@@ -14,9 +14,10 @@ namespace ProxChat.Buffs
         private static int errorCount; // Used to make the error message appear once
         internal static int arrayPos; // The player's position in Main.player
         internal static string name; // Print this
-        internal static float posX; // Print this
-        internal static float posY; // Print this
-        internal static int team; // Print this
+        internal static float posX;
+        internal static float posY;
+        internal static int team;
+
 
         public override void SetStaticDefaults()
         {
@@ -29,14 +30,14 @@ namespace ProxChat.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             // Update the player variables
-            if (count == 0) 
+            if (count == 0)
             {
                 for (int i = Main.player.Length - 1; i >= 0; i--)
                 {
                     if (player.name.Equals(Main.player[i])) 
                     {
-                        arrayPos = i; 
-                        break; 
+                        arrayPos = i;
+                        break;
                     }
                 }
                 // Adds the player's Main.player array position to prevent
@@ -44,13 +45,16 @@ namespace ProxChat.Buffs
                 name = player.name + arrayPos;
             }
             count++;
-
-            posX = player.position.X;
-            posY = player.position.Y;
-            team = player.team;
+            unsafe
+            {
+                Main.NewText("PosX: " + *ProxChatPlayer.posX);
+                Main.NewText("PosY: " + *ProxChatPlayer.posY);
+                Main.NewText("Team: " + *ProxChatPlayer.team);
+            }
+            
 
             // Write the data
-            WritePos();
+            //WritePos();
         }
 
         
@@ -69,8 +73,8 @@ namespace ProxChat.Buffs
         {
             List<string> labels = new() { "Name", "PositionX", "PositionY", 
                                           "Team", "Dead", "InWorld" };
-            List<dynamic> values = new() { name, posX, posY, 
-                                           team, false, true };
+            List<dynamic> values = new() { name, //posX, posY, 
+                                           /*team,*/ false, true };
 
             // debug stuff
             /*
