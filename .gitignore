@@ -1,3 +1,6 @@
 .DS_Store
-obj/**
-bin/**
+obj/
+bin
+.vscode/
+.vs
+.vs/ProxChat
