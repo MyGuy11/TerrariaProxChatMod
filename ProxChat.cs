@@ -9,7 +9,10 @@ namespace ProxChat
 {
 	public class ProxChat : Mod
 	{
-		public static string AppDataPath { get; private set; }
+		internal static string AppDataPath { get; private set; }
+        internal static unsafe float* posX; // Print this
+        internal static unsafe float* posY; // Print this
+        internal static unsafe int* team; // Print this
 
 		public ProxChat()
 		{

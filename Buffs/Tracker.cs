@@ -45,13 +45,6 @@ namespace ProxChat.Buffs
                 name = player.name + arrayPos;
             }
             count++;
-            unsafe
-            {
-                Main.NewText("PosX: " + *ProxChatPlayer.posX);
-                Main.NewText("PosY: " + *ProxChatPlayer.posY);
-                Main.NewText("Team: " + *ProxChatPlayer.team);
-            }
-            
 
             // Write the data
             //WritePos();

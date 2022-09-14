@@ -1,4 +1,4 @@
-﻿// Author = MyGuy
+// Author = MyGuy
 
 using System.Text;
 using System.Collections.Generic;

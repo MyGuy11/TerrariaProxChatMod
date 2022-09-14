@@ -15,9 +15,6 @@ namespace ProxChat
     {
         private readonly List<string> lab = new() { "Dead", "InWorld" }; // Always gonna print the same values, so assigning them beforehand
         private readonly List<dynamic> val = new() { true, true }; // The values for the labels above
-        internal static unsafe float* posX; // Print this
-        internal static unsafe float* posY; // Print this
-        internal static unsafe int* team; // Print this
         
         public override void OnEnterWorld(Player player)
         {
@@ -29,9 +26,9 @@ namespace ProxChat
 
             unsafe
             {
-                fixed (float* temp = &player.position.X) { posX = temp; }
-                fixed (float* temp = &player.position.Y) { posY = temp; }
-                fixed (int* temp = &player.team) { team = temp; }
+                fixed (float* temp = &player.position.X) { ProxChat.posX = temp; }
+                fixed (float* temp = &player.position.Y) { ProxChat.posY = temp; }
+                fixed (int* temp = &player.team) { ProxChat.team = temp; }
 
             }
         }
