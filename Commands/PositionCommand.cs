@@ -2,7 +2,6 @@
 
 using Terraria;
 using Terraria.ModLoader;
-using ProxChat.Buffs;
 
 
 namespace ProxChat.Commands
@@ -12,11 +11,8 @@ namespace ProxChat.Commands
         public override CommandType Type
             => CommandType.Chat;
 
-        public override string Command 
+        public override string Command
             => "proxPos";
-
-        public override string Usage 
-            => "/proxPos";
 
         public override string Description
             => "Prints the player's current position";

@@ -1,12 +1,12 @@
 // Author = MyGuy
 
+using System.Collections.Generic;
+
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 
 using ProxChat.Buffs;
-using ProxChatAssistant;
-using System.Collections.Generic;
 using System;
 
 namespace ProxChat
@@ -15,7 +15,7 @@ namespace ProxChat
     {
         private readonly List<string> lab = new() { "Dead", "InWorld" }; // Always gonna print the same values, so assigning them beforehand
         private readonly List<dynamic> val = new() { true, true }; // The values for the labels above
-        
+
         public override void OnEnterWorld(Player player)
         {
             Main.NewText("Welcome to Terraria ProxChat!");
@@ -26,16 +26,16 @@ namespace ProxChat
 
             unsafe
             {
-                fixed (float* temp = &player.position.X) { ProxChat.posX = temp; }
-                fixed (float* temp = &player.position.Y) { ProxChat.posY = temp; }
-                fixed (int* temp = &player.team) { ProxChat.team = temp; }
-
+                fixed (float* temp = &player.position.X) { Pointers.posX = temp; }
+                fixed (float* temp = &player.position.Y) { Pointers.posY = temp; }
+                fixed (int* temp = &player.team) { Pointers.team = temp; }
+                fixed (bool* temp = &player.dead) { Pointers.dead = temp; }
+                fixed (bool* temp = &ProxChat.inWorld) { Pointers.inWorldptr = temp; *temp = true; }
             }
         }
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
-            EditValuesContainer(lab, val);
         }
 
         public override void OnRespawn(Player player)
@@ -46,29 +46,11 @@ namespace ProxChat
         public override void PreUpdate()
         {
             Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
-            
         }
 
         public override void PreSavePlayer()
         {
-            //EditContainer("InWorld", false);
-        }
-
-        public override void PlayerDisconnect(Player player)
-        {
-            //EditContainer("InWorld", false);
-        }
-
-        // These two containers exist so that I can await the ProxWriter methods.
-        // This way, it doesn't freeze the game.
-        public static async void EditContainer(string label, dynamic data)
-        {
-            await ProxWriter.EditValueAsync(ProxChat.AppDataPath, label, data);   
-        }
-
-        private static async void EditValuesContainer(List<string> labels, List<dynamic> values)
-        {
-            await ProxWriter.EditValuesAsync(ProxChat.AppDataPath, labels, values);
+            if (Array.IndexOf(Main.player, Player.name) == -1) { ProxChat.inWorld = false; }
         }
     }
 }

@@ -2,8 +2,6 @@
 
 using Terraria;
 using Terraria.ModLoader;
-using ProxChat.Buffs;
-
 
 namespace ProxChat.Commands
 {
@@ -12,11 +10,8 @@ namespace ProxChat.Commands
         public override CommandType Type
             => CommandType.Chat;
 
-        public override string Command 
+        public override string Command
             => "proxChannel";
-
-        public override string Usage 
-            => "/proxChannel";
 
         public override string Description
             => "Prints the player's current radio channel integer";

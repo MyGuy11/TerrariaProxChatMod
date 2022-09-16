@@ -1,8 +1,9 @@
 displayName = Terraria Proximity Chat
 author = MyGuy
-version = 1.0.0
+version = 1.0.5
 hideCode = false
 hideResources = false
+side = client
 homepage = https://github.com/MyGuy11/TerrariaProxChatMod
 includeSource = true
 includePDB = true

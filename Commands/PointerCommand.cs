@@ -6,20 +6,22 @@ using Terraria.ModLoader;
 
 namespace ProxChat.Commands
 {
-    public class PathCommmand : ModCommand
+    public class PointerCommand : ModCommand
     {
         public override CommandType Type
             => CommandType.Chat;
 
         public override string Command
-            => "proxPath";
+            => "proxPtr";
 
         public override string Description
-            => "Prints the mod's data path";
+            => "Prints the address of the value pointers";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText(ProxChat.AppDataPath);
+            foreach (string line in Pointers.GetAddresses()) { Main.NewText(line); }
         }
+
+
     }
 }

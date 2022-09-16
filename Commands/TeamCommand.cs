@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ModLoader;
 using ProxChat.Buffs;
 
-
 namespace ProxChat.Commands
 {
     public class TeamCommand : ModCommand
@@ -12,11 +11,8 @@ namespace ProxChat.Commands
         public override CommandType Type
             => CommandType.Chat;
 
-        public override string Command 
+        public override string Command
             => "proxTeam";
-
-        public override string Usage 
-            => "/proxTeam";
 
         public override string Description
             => "Prints the player's current team integer";
@@ -24,8 +20,7 @@ namespace ProxChat.Commands
         public override void Action(CommandCaller caller, string input, string[] args)
         {
             Main.NewText(Tracker.team);
+            Main.NewText(ProxChat.inWorld);
         }
-
-
     }
 }
