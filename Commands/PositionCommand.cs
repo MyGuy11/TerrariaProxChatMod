@@ -27,6 +27,9 @@ namespace ProxChat.Commands
             Main.NewText("Y (blocks): " + (y / 16));
             Main.NewText("X (meters): " + (x / 32 * 0.3048));
             Main.NewText("Y (meters): " + (y / 32 * 0.3048));
+
+            Main.NewText("ProxPosX: " + ProxChat.data.PosX);
+            Main.NewText("ProxPosY: " + ProxChat.data.PosY);
         }
     }
 }

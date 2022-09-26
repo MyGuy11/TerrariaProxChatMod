@@ -19,7 +19,7 @@ namespace ProxChat.Commands
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText(ProxChat.AppDataPath);
+            Main.NewText(ProxChat.FilePath);
         }
     }
 }

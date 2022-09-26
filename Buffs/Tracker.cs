@@ -7,11 +7,6 @@ namespace ProxChat.Buffs
 {
     public class Tracker : ModBuff
     {
-        private int count; // Used to make the name assignment happen once
-        internal static char[] name; // Print this
-        internal static int team;
-
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Tracker");
@@ -22,31 +17,25 @@ namespace ProxChat.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            // Update the player variables
-            if (count == 0)
+            if (ProxChat.data.PosX != player.position.X)
             {
-                string tempString = player.name;
-                for (int i = Main.player.Length - 1; i >= 0; i--)
-                {
-                    if (player.name.Equals(Main.player[i]))
-                    {
-                        tempString += i;
-                        break;
-                    }
-                }
-                // Adds the player's Main.player array position to prevent
-                // an issue with duplicate player names.
-                name = tempString.ToCharArray();
-                unsafe
-                {
-                    fixed (char* temp = &name[0]) { Pointers.nameStr = temp; };
-                    Pointers.nameStrLen = name.Length;
-                }
+                ProxChat.data.PosX = player.position.X;
+                ProxChatPlayer.WriteData(0);
             }
-            count++;
 
-            // Write the data
-            //WritePos();
+            if (ProxChat.data.PosY != player.position.Y)
+            {
+                ProxChat.data.PosY = player.position.Y;
+                ProxChatPlayer.WriteData(4);
+            }
+
+            if (ProxChat.data.Team != (byte)player.team)
+            {
+                ProxChat.data.Team = (byte)player.team;
+                ProxChatPlayer.WriteData(8);
+            }
+
+            //if (ProxChat.data.RadioChannel) // Implement later
         }
     }
 }

@@ -15,12 +15,12 @@ namespace ProxChat.Commands
             => "proxTeam";
 
         public override string Description
-            => "Prints the player's current team integer";
+            => "Prints the player's current team";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText(Tracker.team);
-            Main.NewText(ProxChat.inWorld);
+            Main.NewText(ProxChat.data.Team);
+            Main.NewText(ProxChat.data.InWorld);
         }
     }
 }

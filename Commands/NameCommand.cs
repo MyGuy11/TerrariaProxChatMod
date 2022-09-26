@@ -19,7 +19,7 @@ namespace ProxChat.Commands
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            Main.NewText(Tracker.name.ToString());
+            Main.NewText(ProxChat.data.Name);
         }
 
 

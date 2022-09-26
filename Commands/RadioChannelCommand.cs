@@ -14,7 +14,7 @@ namespace ProxChat.Commands
             => "proxChannel";
 
         public override string Description
-            => "Prints the player's current radio channel integer";
+            => "Prints the player's current radio channel";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
