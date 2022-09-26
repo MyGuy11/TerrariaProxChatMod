@@ -1,14 +1,12 @@
-using System.Text;
-using System.IO.MemoryMappedFiles;
-using System.ComponentModel.DataAnnotations;
-
-using System.Security;
 // Author = MyGuy
 
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.IO.MemoryMappedFiles;
+using System.Text;
+
 using Terraria.ModLoader;
-using Terraria;
 // https://github.com/tModLoader/tModLoader/wiki/Update-Migration-Guide
 
 namespace ProxChat
@@ -22,7 +20,7 @@ namespace ProxChat
 
         public ProxChat()
         {
-            // Get the path to the ProxChat.dat file
+            // Get the path of the file & map into memory
             FilePath = Path.Combine(Path.GetTempPath(), "tModLoaderProxChat.tmp");
             mmf = MemoryMappedFile.CreateFromFile(File.Create(FilePath, 64),
                                                   null,
@@ -40,7 +38,6 @@ namespace ProxChat
         {
             mmf.Dispose();
             stream.Dispose();
-            File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ProxModLog.txt"), "streams disposed");
             base.Close();
         }
     }

@@ -1,5 +1,3 @@
-# Put on hiatus until Mumble 1.4 x64 doesn't run like garbage
-
 # TerrariaProxChatMod
 A tModLoader 1.4 mod that allows the companion mumble plugin to work.<br/>
 Allows people to use proximity chat in Terraria with Mumble.
@@ -10,7 +8,7 @@ Mumble at https://www.mumble.info/downloads/,<br />
 and the companion plugin at https://github.com/MyGuy11/TerrariaProxChatPlugin under the <b>Releases</b> tab.<br />
 
 ## Install
-If you download the mod from the mod browser, it'll install itself, otherwise:<br />
+If you download the mod from the mod browser or steam workshop, it'll install itself, otherwise:<br />
 1) Launch tModLoader.<br />
 2) Go to the <b>Workshop</b> tab.<img width="1680" alt="Screen Shot 2022-03-24 at 10 40 14 AM" src="https://user-images.githubusercontent.com/35243044/159977361-eeefce3b-9b25-4ff0-add5-546859bfca9e.png"><br />
 3) Click on <b>Manage Mods</b><img width="1680" alt="Screen Shot 2022-03-24 at 10 41 43 AM" src="https://user-images.githubusercontent.com/35243044/159977876-fd906947-ed2d-4c6b-99a0-95adaacc4ff1.png"><br />

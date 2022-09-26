@@ -16,7 +16,6 @@ namespace ProxChat
 {
     public class ProxChatPlayer : ModPlayer
     {
-
         public override void OnEnterWorld(Player player)
         {
             int arrPos = Array.IndexOf(Main.player, player);
@@ -61,17 +60,9 @@ namespace ProxChat
             Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
         }
 
-        public override void PlayerDisconnect(Player player)
-        {
-        }
-
         public override void PreSavePlayer()
         {
-            if (Main.player[0] is null)
-            {
-                Main.NewText("Nice cock");
-                File.WriteAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ProxLog.txt"), "it worked");
-            }
+            Main.NewText("Nice cock");
             if (Array.IndexOf(Main.player, Player) == -1)
             {
                 
@@ -79,6 +70,10 @@ namespace ProxChat
                 WriteData(11);
             }
             else { Main.NewText("sugondese"); }
+        }
+
+        public override void PostSavePlayer()
+        {
         }
 
         public static async void WriteData(int position)
