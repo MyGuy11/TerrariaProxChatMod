@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using System.IO;
 // Author = MyGuy
 
@@ -20,10 +21,15 @@ namespace ProxChat
         {
             int arrPos = Array.IndexOf(Main.player, player);
             string temp = string.Concat(Player.name, arrPos);
-            ProxChat.data.NameLen = (byte)temp.Length;
-            ProxChat.data.Name = temp.Length > 51
-            ? string.Concat(temp[..49], arrPos)
+            int difference = temp.Length - 19;
+            ProxChat.data.Name = temp.Length > 20
+            ? string.Concat(temp[..(temp.Length - difference)], arrPos)
             : temp;
+
+            ProxChat.data.NameLen = (byte)ProxChat.data.Name.Length;
+
+            ProxChat.data.WorldName = Main.worldName;
+            ProxChat.data.WorldNameLen = (byte)Main.worldName.Length;
 
             ProxChat.data.InWorld = 1;
 
@@ -31,6 +37,7 @@ namespace ProxChat
             ProxChat.data.PosY = Player.position.Y;
             ProxChat.data.Team = (byte)Player.team;
             ProxChat.data.Dead = 0;
+            ProxChat.data.RadioChannel = 0;
 
             WriteData(-1);
 
@@ -45,7 +52,6 @@ namespace ProxChat
         {
             ProxChat.data.Dead = 1;
             WriteData(9);
-            Main.NewText("You Died. " + ProxChat.data.Dead);
         }
 
         public override void OnRespawn(Player player)
@@ -60,22 +66,6 @@ namespace ProxChat
             Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
         }
 
-        public override void PreSavePlayer()
-        {
-            Main.NewText("Nice cock");
-            if (Array.IndexOf(Main.player, Player) == -1)
-            {
-                
-                ProxChat.data.InWorld = 0;
-                WriteData(11);
-            }
-            else { Main.NewText("sugondese"); }
-        }
-
-        public override void PostSavePlayer()
-        {
-        }
-
         public static async void WriteData(int position)
         {
             ProxChat.stream.Position = (position is -1) ? 0 : position;
@@ -83,6 +73,9 @@ namespace ProxChat
             {
                 case -1:
                     await ProxChat.stream.WriteAsync(ProxChat.data.ToByteArray());
+
+                    ProxChat.stream.Position = 60;
+                    await ProxChat.stream.WriteAsync(BitConverter.GetBytes(Environment.ProcessId));
                     break;
 
                 case 0:
@@ -117,13 +110,20 @@ namespace ProxChat
                     await ProxChat.stream.WriteAsync(Encoding.UTF8.GetBytes(ProxChat.data.Name));
                     break;
 
+                case 33:
+                    await ProxChat.stream.WriteAsync(BitConverter.GetBytes(ProxChat.data.WorldNameLen));
+                    break;
+
+                case 34:
+                    await ProxChat.stream.WriteAsync(Encoding.UTF8.GetBytes(ProxChat.data.WorldName));
+                    break;
+
                 case 63:
                     await ProxChat.stream.WriteAsync(new byte[] { 1 });
                     Main.NewText("Off");
                     break;
 
                 case 632:
-                    ProxChat.stream.Position = 63;
                     await ProxChat.stream.WriteAsync(new byte[] { 0 });
                     Main.NewText("On");
                     break;
