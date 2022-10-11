@@ -3,7 +3,6 @@
 using Terraria;
 using Terraria.ModLoader;
 
-
 namespace ProxChat.Commands
 {
     public class FieldsCommand : ModCommand
@@ -24,7 +23,5 @@ namespace ProxChat.Commands
                 Main.NewText(value.Name + ": " + value.GetValue(ProxChat.data));
             }
         }
-
-
     }
 }

@@ -3,7 +3,6 @@
 using Terraria;
 using Terraria.ModLoader;
 
-
 namespace ProxChat.Commands
 {
     public class PositionCommand : ModCommand

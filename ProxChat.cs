@@ -1,8 +1,6 @@
 // Author = MyGuy
 
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Text;
@@ -73,7 +71,6 @@ namespace ProxChat
         public byte WorldNameLen { get; set; }
         /// <summary>The world's name, 34 - 60</summary>
         public string WorldName { get; set; }
-
 
         internal byte[] ToByteArray()
         {

@@ -1,4 +1,5 @@
-using Terraria;
+// Author = MyGuy
+
 using Terraria.ModLoader;
 
 namespace ProxChat

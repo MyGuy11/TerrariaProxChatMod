@@ -21,7 +21,5 @@ namespace ProxChat.Commands
             //Main.NewText(RadioBuff.radioChannel);
             Main.NewText("Not implemented yet");
         }
-
-
     }
 }

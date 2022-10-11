@@ -2,7 +2,6 @@
 
 using Terraria;
 using Terraria.ModLoader;
-using ProxChat.Buffs;
 
 namespace ProxChat.Commands
 {
@@ -21,7 +20,5 @@ namespace ProxChat.Commands
         {
             Main.NewText(ProxChat.data.Name);
         }
-
-
     }
 }

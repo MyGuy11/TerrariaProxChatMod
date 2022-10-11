@@ -1,8 +1,6 @@
 // Author = MyGuy
 
-using Terraria;
 using Terraria.ModLoader;
-using ProxChat.Buffs;
 
 namespace ProxChat.Commands
 {
