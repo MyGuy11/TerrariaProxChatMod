@@ -1,4 +1,4 @@
-// Author = MyGuy
+// Author.name = MyGuy
 
 using Terraria.ModLoader;
 
