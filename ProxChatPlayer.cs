@@ -13,12 +13,14 @@ namespace ProxChat
 {
     public class ProxChatPlayer : ModPlayer
     {
+        private const int MAX_NAME_LENGTH = 20;
+
         public override void OnEnterWorld(Player player)
         {
             int arrPos = Array.IndexOf(Main.player, player);
             string temp = string.Concat(Player.name, arrPos);
-            int difference = temp.Length - 19;
-            ProxChat.data.Name = temp.Length > 20
+            int difference = temp.Length - MAX_NAME_LENGTH;
+            ProxChat.data.Name = temp.Length > MAX_NAME_LENGTH
             ? string.Concat(temp[..(temp.Length - difference)], arrPos)
             : temp;
 
@@ -69,9 +71,6 @@ namespace ProxChat
             {
                 case -1:
                     await ProxChat.stream.WriteAsync(ProxChat.data.ToByteArray());
-
-                    ProxChat.stream.Position = 60;
-                    await ProxChat.stream.WriteAsync(BitConverter.GetBytes(Environment.ProcessId));
                     break;
 
                 case 0:
@@ -106,20 +105,20 @@ namespace ProxChat
                     await ProxChat.stream.WriteAsync(Encoding.UTF8.GetBytes(ProxChat.data.Name));
                     break;
 
-                case 33:
+                case 35:
                     await ProxChat.stream.WriteAsync(BitConverter.GetBytes(ProxChat.data.WorldNameLen));
                     break;
 
-                case 34:
+                case 36:
                     await ProxChat.stream.WriteAsync(Encoding.UTF8.GetBytes(ProxChat.data.WorldName));
                     break;
 
-                case 63:
+                case 127:
                     await ProxChat.stream.WriteAsync(new byte[] { 1 });
                     Main.NewText("Off");
                     break;
 
-                case 632:
+                case 1272:
                     await ProxChat.stream.WriteAsync(new byte[] { 0 });
                     Main.NewText("On");
                     break;

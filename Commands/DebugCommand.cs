@@ -20,8 +20,8 @@ namespace ProxChat.Commands
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
-            if (args[0].Equals("off", System.StringComparison.OrdinalIgnoreCase)) { ProxChatPlayer.WriteData(63); }
-            if (args[0].Equals("on", System.StringComparison.OrdinalIgnoreCase)) { ProxChatPlayer.WriteData(632); }
+            if (args[0].Equals("off", System.StringComparison.OrdinalIgnoreCase)) { ProxChatPlayer.WriteData(127); }
+            if (args[0].Equals("on", System.StringComparison.OrdinalIgnoreCase)) { ProxChatPlayer.WriteData(1272); }
         }
     }
 }
