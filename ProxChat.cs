@@ -13,6 +13,7 @@ namespace ProxChat
     public class ProxChat : Mod
     {
         internal static string FilePath { get; private set; }
+        internal static FileStream fs;
         internal static MemoryMappedFile mmf;
         internal static MemoryMappedViewStream stream;
         internal static DataContainer data;
@@ -31,7 +32,8 @@ namespace ProxChat
         {
             // Get the path of the file & map into memory
             FilePath = Path.Combine(Path.GetTempPath(), "tModLoaderProxChat.tmp");
-            mmf = MemoryMappedFile.CreateFromFile(File.Create(FilePath, 128),
+            fs = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read);
+            mmf = MemoryMappedFile.CreateFromFile(fs,
                                                   null,
                                                   128,
                                                   MemoryMappedFileAccess.ReadWrite,
@@ -47,8 +49,9 @@ namespace ProxChat
 
         public override void Close()
         {
-            mmf.Dispose();
             stream.Dispose();
+            mmf.Dispose();
+            fs.Dispose();
             base.Close();
         }
 
