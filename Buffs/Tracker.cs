@@ -10,8 +10,8 @@ namespace ProxChat.Buffs
         private const float FT_TO_M = 1f / 3.281f;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tracker");
-            Description.SetDefault("Tracking your position");
+            // DisplayName.SetDefault("Tracker");
+            // Description.SetDefault("Tracking your position");
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
         }

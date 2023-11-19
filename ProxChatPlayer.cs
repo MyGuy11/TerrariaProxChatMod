@@ -15,9 +15,9 @@ namespace ProxChat
     {
         private const int MAX_NAME_LENGTH = 20;
 
-        public override void OnEnterWorld(Player player)
+        public override void OnEnterWorld()
         {
-            int arrPos = Array.IndexOf(Main.player, player);
+            int arrPos = Array.IndexOf(Main.player, Player);
             string temp = string.Concat(Player.name, arrPos);
             int difference = temp.Length - MAX_NAME_LENGTH;
             ProxChat.data.Name = temp.Length > MAX_NAME_LENGTH
@@ -43,7 +43,7 @@ namespace ProxChat
 
             //Give the Tracker buff to start update loop
             //int.MaxValue to ensure that the buff never runs out; Had it run out during testing with 2 tick buff and constant updates
-            player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
+            Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
         }
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
@@ -52,11 +52,11 @@ namespace ProxChat
             WriteData(9);
         }
 
-        public override void OnRespawn(Player player)
+        public override void OnRespawn()
         {
             ProxChat.data.Dead = 0;
             WriteData(9);
-            player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue, false);
+            Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue, false);
         }
 
         public override void PreUpdate()

@@ -1,0 +1,6 @@
+Buffs: {
+	Tracker: {
+		DisplayName: Tracker
+		Description: Mods.ProxChat.Buffs.Tracker.Description
+	}
+}

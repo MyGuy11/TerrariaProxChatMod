@@ -49,9 +49,9 @@ namespace ProxChat
 
         public override void Close()
         {
-            stream.Dispose();
-            mmf.Dispose();
-            fs.Dispose();
+            stream?.Dispose();
+            mmf?.Dispose();
+            fs?.Dispose();
             base.Close();
         }
 
