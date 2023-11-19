@@ -56,12 +56,12 @@ namespace ProxChat
         {
             ProxChat.data.Dead = 0;
             WriteData(9);
-            player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
+            player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue, false);
         }
 
         public override void PreUpdate()
         {
-            Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue);
+            Player.AddBuff(ModContent.BuffType<Tracker>(), int.MaxValue, false);
         }
 
         public static async void WriteData(int position)
