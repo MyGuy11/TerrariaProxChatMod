@@ -1,5 +1,6 @@
 // Author.name = MyGuy
 
+using ProxChat.Buffs;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -20,12 +21,11 @@ namespace ProxChat.Commands
         {
             var x = caller.Player.position.X;
             var y = caller.Player.position.Y;
+
             Main.NewText("X (pixels): " + x);
             Main.NewText("Y (pixels): " + y);
-            Main.NewText("X (blocks): " + (x / 16));
-            Main.NewText("Y (blocks): " + (y / 16));
-            Main.NewText("X (meters): " + (x / 32 * 0.3048));
-            Main.NewText("Y (meters): " + (y / 32 * 0.3048));
+            Main.NewText("X (meters): " + Tracker.PosToM(x));
+            Main.NewText("Y (meters): " + Tracker.PosToM(y));
 
             Main.NewText("ProxPosX: " + ProxChat.data.PosX);
             Main.NewText("ProxPosY: " + ProxChat.data.PosY);

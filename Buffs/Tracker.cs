@@ -7,7 +7,14 @@ namespace ProxChat.Buffs
 {
     public class Tracker : ModBuff
     {
+        // 1 block = 2x2 ft
+        // 1 block = 8x8 pixels
+        // 1 ft = 4 pixels
         private const float FT_TO_M = 1f / 3.281f;
+        private const float PIX_TO_FT = 1f / 4f;
+        public static float PosToM(float pos) => pos * PIX_TO_FT * FT_TO_M;
+        private float tempX;
+        private float tempY;
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Tracker");
@@ -18,15 +25,17 @@ namespace ProxChat.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            if (ProxChat.data.PosX != player.position.X * FT_TO_M)
+            tempX = PosToM(player.position.X);
+            tempY = PosToM(player.position.Y);
+            if (ProxChat.data.PosX != tempX)
             {
-                ProxChat.data.PosX = player.position.X * FT_TO_M;
+                ProxChat.data.PosX = tempX;
                 ProxChatPlayer.WriteData(0);
             }
 
-            if (ProxChat.data.PosY != player.position.Y * FT_TO_M)
+            if (ProxChat.data.PosY != tempY)
             {
-                ProxChat.data.PosY = player.position.Y * FT_TO_M;
+                ProxChat.data.PosY = tempY;
                 ProxChatPlayer.WriteData(4);
             }
 

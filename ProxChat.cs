@@ -18,6 +18,7 @@ namespace ProxChat
         internal static MemoryMappedViewStream stream;
         internal static DataContainer data;
         internal static int pid;
+        private const int MAPSIZE = 128;
 
         // Bytes 64-66 of mmf are reserved for the Process ID
         // Byte 127 is reserved for debugging tool
@@ -35,7 +36,7 @@ namespace ProxChat
             fs = File.Open(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read);
             mmf = MemoryMappedFile.CreateFromFile(fs,
                                                   null,
-                                                  128,
+                                                  MAPSIZE,
                                                   MemoryMappedFileAccess.ReadWrite,
                                                   HandleInheritability.None,
                                                   false

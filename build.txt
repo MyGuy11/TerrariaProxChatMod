@@ -1,6 +1,6 @@
 displayName = Terraria Proximity Chat
 author = MyGuy
-version = 0.5.2
+version = 0.5.5
 hideCode = false
 hideResources = false
 side = client
