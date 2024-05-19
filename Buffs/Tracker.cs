@@ -25,6 +25,10 @@ namespace ProxChat.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
+            if (!player.name.Equals(ProxChat.data.Name[0..^1], System.StringComparison.Ordinal)) {
+                return;
+            }
+
             tempX = PosToM(player.position.X);
             tempY = PosToM(player.position.Y);
             if (ProxChat.data.PosX != tempX)
